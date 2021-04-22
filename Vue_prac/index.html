@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        
+        <div id="app">
+            {{ message }}
+        </div>
+        
+<div id="app3">
+    <p v-if="seen">now you see me</p>
+</div>
+
+<div id="app4">
+    <ol>
+        <li v-for="todo in todos">
+        <!-- v-for: 배열(todos)의 데이터를 (todo로) 바인딩 -->
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+
+<div id="app5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">메세지 뒤집기</button>
+    <!-- js로 작성한 나만의 함수를 div에 바로 사용할 수 있다 -->
+</div>
+
+<div id="app6">
+    <p>{{message}}</p>
+    <input v-model="message">
+    <!-- v-model: 입력과 앱 상태를 양방향으로(실시간으로?) 바인딩하는 디렉티브 -->
+</div>
+
+<div id="app_comp1">
+    <ol>
+        <shopping_list
+        v-for="product in groceryList"
+        v-bind:content="product"
+        v-bind:key="product.id"
+        ></shopping_list>
+    </ol>
+    <ol>
+         <shopping_list2
+         v-for="product in groceryList"
+         v-bind:content2="product"
+         v-bind:key="product.id"
+        ></shopping_list2>
+    
+    </ol>
+    <!-- app7(부모)의 groceryList를 가져와서 차례대로 product에 넣을거야 -->
+    <!-- todo-item 태그(자식)의 content에 product를 바인딩(이제서야 상속)할거야 -->
+</div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
